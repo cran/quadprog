@@ -1,5 +1,5 @@
 ###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: quadprog.R,v 1.2 2001/11/27 13:19:12 hornik Exp $
+###  $Id: quadprog.R,v 1.3 2002/07/03 07:48:22 hornik Exp $
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
        iact=res1$iact[1:res1$nact])   
 }
 ###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: quadprog.R,v 1.2 2001/11/27 13:19:12 hornik Exp $
+###  $Id: quadprog.R,v 1.3 2002/07/03 07:48:22 hornik Exp $
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
