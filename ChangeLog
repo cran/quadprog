@@ -1,3 +1,7 @@
+2001-06-10  Andreas Weingessel  <Andreas.Weingessel@ci.tuwien.ac.at>
+
+	* Changed Version number to 1.4-3 to fit to CRAN
+
 2000-12-27  Andreas Weingessel  <Andreas.Weingessel@ci.tuwien.ac.at>
 
 	* DESCRIPTION (Version): New version is 1.2-4. Minor changes in
