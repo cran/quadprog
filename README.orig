@@ -1,0 +1,86 @@
+This library contains routines and documentation for solving quadratic
+programming problems.
+
+I implemented these routines (using the algorithm of Goldfarb and
+Idnani, 1982, 1983) and decided to distribute them in the hope that
+they may also be useful to others.  Hence, this software is provided
+"as is" without any expressed or implied warranty.
+
+The routines are released under the GNU Copyleft although I am not
+sure whether it is applicable since at least the S-PLUS interface
+works together with a commercial software.  But even if a distribution
+under these terms is legally not allowed, I would like to ask you to
+respect the spirit of the GNU Copyleft when using this code.
+
+The complete distribution consists of the following files:
+
+solve.QP.compact.f   fortran routine to solve a quadratic programming
+                     problem where the matrix defining the constraints
+                     is stored in a compact format.
+solve.QP.f           fortran routine to solve a quadratic programming
+                     problem. 
+util.f               some fortran utility functions.
+solve.QP.compact.d   S-PLUS help file for solve.QP.compact.
+solve.QP.d           S-PLUS help file for solve.QP.compact.
+QuadProg.q           the S-Plus functions of this library.
+Makefile             a makefile which should facilitate the
+                     installation of this library.
+COPYING              GNU Copyleft (mentioned above).
+README               short description of the routines of the library
+                     (necessary to make `library(help=QuadProg)' work
+                     in S-PLUS once the library is installed).
+README.1st           you are just reading it ;-).
+README.INSTALL       some information on how to install the library.
+README.pd            README file which should go into the parent
+                     directory of the QuadProg directory in which the
+                     library resides in the end (necessary so that
+                     `library()' will give the desired information in
+                     S-PLUS).
+ChangeLog            history of the development of this library.
+
+If you have any troubles or if you find any bugs in this library,
+please let me know and I will try to fix it.  I would also be
+interested to hear from you if you find this library useful and for
+what kind of problems you are using it.
+
+Best wishes,
+        
+        Berwin
+
+=============================== Full address ================================
+
+Berwin A. Turlach
+Centre for Mathematics and its Applications  Tel.: +61 (6) 249 0706 (Secr.) 
+Statistical Science Program                        +61 (6) 249 0731 (direct)
+The Australian National University           FAX : +61 (6) 249 5549
+Canberra ACT 0200                          e-mail: berwin.turlach@anu.edu.au
+Australia
+
+
+----------------------------------------------------------------------
+The following lines have originally been in the S-code file
+----------------------------------------------------------------------
+
+###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
+###
+###  These programs are free software; you can redistribute them
+###  and/or modify them under the terms of the GNU General Public
+###  License as published by the Free Software Foundation; either
+###  version 2 of the License, or (at your option) any later version.
+###
+###  These programs are distributed in the hope that they will be
+###  useful, but WITHOUT ANY WARRANTY; without even the implied
+###  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+###  See the GNU General Public License for more details.
+###
+###  You should have received a copy of the GNU General Public License
+###  along with these programs; if not, write to the Free Software
+###  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+###  USA.
+###
+
+###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
+###  $Id: solve.QP.compact.sf,v 1.10 1997/12/30 07:20:52 berwin Exp $
+
+###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
+###  $Id: solve.QP.sf,v 1.11 1997/12/28 21:57:20 berwin Exp $

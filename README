@@ -1,0 +1,35 @@
+This is an R port of the quadprog package version 1.4 of
+Berwin A. Turlach <bturlach@maths.adelaide.edu.au> which can be found
+at http://www.stats.adelaide.edu.au/people/bturlach/software/quadprog.html
+and also in the statlib archive.
+
+Changes from original:
+
+	changed order of variables in declaration of subroutine aind
+	from
+		integer ind(m,*), m, q, n, i, j
+	to
+		integer m, ind(m,*), q, n, i, j
+	because g77 complained. Made corresponding change in
+	subroutine qpgen1 in solve.QP.compact.f.
+
+	removed function ".First.lib"
+
+See README.orig for original authors and Copyright
+
+The latest version of this package can always be downloaded from any
+CRAN mirror. The CRAN master site can be found at
+
+        http://www.ci.tuwien.ac.at/R
+        ftp://ftp.ci.tuwien.ac.at/pub/R
+
+
+************************************************************************
+*                          Andreas Weingessel                          *
+************************************************************************
+* Institut für Statistik      *                Tel: (+43 1) 58801 4541 *
+* Technische Universität Wien *                Fax: (+43 1)  504 14 98 *
+* Wiedner Hauptstr. 8-10/1071 *     Andreas.Weingessel@ci.tuwien.ac.at *
+* A-1040 Wien, Austria        * http://www.ci.tuwien.ac.at/~weingessel *
+************************************************************************
+
