@@ -1,7 +1,7 @@
-This is an R port of the quadprog package version 1.4 of
-Berwin A. Turlach <bturlach@maths.adelaide.edu.au> which can be found
-at http://www.stats.adelaide.edu.au/people/bturlach/software/quadprog.html
-and also in the statlib archive.
+This is an R port of the quadprog package version 1.2 of
+Berwin A. Turlach <berwin.turlach@anu.edu.au> which can be found
+at http://wilton.anu.edu.au/%7Eberwin/software/quadprog.html. An older
+version can also be found in the statlib archive.
 
 Changes from original:
 

@@ -1,3 +1,9 @@
+2000-12-27  Andreas Weingessel  <Andreas.Weingessel@ci.tuwien.ac.at>
+
+	* DESCRIPTION (Version): New version is 1.2-4. Minor changes in
+	description file to fit R 1.2.0. Minor changes in the
+	documentation to make better use of the Rd features.
+
 Tue May 26 09:47:43 1998  Andreas Weingessel  <Andreas.Weingessel@ci.tuwien.ac.at>
 
 	* ported version 1.2 to R

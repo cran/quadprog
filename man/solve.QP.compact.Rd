@@ -1,12 +1,12 @@
-\name{solve.QP}
-\alias{solve.QP}
+\name{solve.QP.compact}
+\alias{solve.QP.compact}
 
 \title{
 Solve a Quadratic Programming Problem
 }
 
 \usage{
-solve.QP(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE)
+solve.QP.compact(Dmat, dvec, Amat, Aind, bvec, meq=0, factorized=FALSE)
 }
 
 \arguments{
@@ -17,8 +17,19 @@ matrix appearing in the quadratic function to be minimized.
 vector appearing in the quadratic function to be minimized.
 }
 \item{Amat}{
-matrix defining the constraints under which we want to
-minimize the quadratic function.
+matrix containing the non-zero elements of the matrix \eqn{A} that defines 
+the constraints.  If \eqn{m_i} denotes the number of non-zero elements in the
+\eqn{i}-th column of \eqn{A} then the first \eqn{m_i} entries of the
+\eqn{i}-th column of \code{Amat} hold these non-zero elements.
+(If \eqn{maxmi} denotes the maximum of all \eqn{m_i}, then each column of
+\code{Amat} may have arbitrary elements from row \eqn{m_i+1} to row
+\eqn{maxmi} in the \eqn{i}-th column.) 
+}
+\item{Aind}{
+matrix of integers.  The first element of each column gives the number of
+non-zero elements in the corresponding column of the matrix \eqn{A}.  The
+following entries in each column contain the indexes of the rows in
+which these non-zero elements are.
 }
 \item{bvec}{
 vector holding the values of \eqn{b_0} (defaults to zero).
@@ -29,7 +40,8 @@ all further as inequality constraints (defaults to 0).
 }
 \item{factorized}{
 logical flag: if \code{TRUE}, then we are passing
-\eqn{R^{-1}}{R^(-1)} (where \eqn{D = R^T R}) instead of the matrix \eqn{D}  in the argument \code{Dmat}.
+\eqn{R^{-1}}{R^(-1)} (where \eqn{D = R^T R}) instead of the matrix
+\eqn{D}  in the argument \code{Dmat}.}
 }
 
 \value{
@@ -71,7 +83,7 @@ Mathematical Programming
 }
 
 \seealso{
-\code{\link{solve.QP.compact}}
+\code{\link{solve.QP}}
 }
 
 \examples{
@@ -82,15 +94,16 @@ Mathematical Programming
 # and      (-4  2  0) 
 #      A = (-3  1 -2)
 #          ( 0  0  1)
-# we can use solve.QP as follows:
+# we can use solve.QP.compact as follows:
 #
 Dmat       <- matrix(0,3,3)
 diag(Dmat) <- 1
 dvec       <- c(0,5,0)
-Amat       <- matrix(c(-4,-3,0,2,1,0,0,-2,1),3,3)
+Aind       <- rbind(c(2,2,2),c(1,1,2),c(2,2,3))
+Amat       <- rbind(c(-4,2,-2),c(-3,1,1))
 bvec       <- c(-8,2,0)
-solve.QP(Dmat,dvec,Amat,bvec=bvec)
+solve.QP.compact(Dmat,dvec,Amat,Aind,bvec=bvec)
 }
 
 \keyword{optimize}
-
+% Converted by Sd2Rd version 0.2-a5.

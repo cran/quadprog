@@ -17,7 +17,7 @@
 ###  USA.
 ###
 solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
-                             factorized=F){  
+                             factorized=FALSE){  
   n     <- nrow(Dmat)
   q     <- ncol(Amat)
   anrow <- nrow(Amat)
@@ -86,7 +86,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
 ###  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 ###  USA.
 ###
-solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=F){  
+solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){  
 
   n     <- nrow(Dmat)
   q     <- ncol(Amat)
