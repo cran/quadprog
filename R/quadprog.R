@@ -33,7 +33,8 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
   Aindok <- .Fortran("aind",
                      as.integer(Aind), as.integer(anrow+1),
                      as.integer(q), as.integer(n),
-                     ok=as.logical(TRUE))$ok
+                     ok=as.logical(TRUE),
+                     PACKAGE = "quadprog")$ok
   if( !Aindok )
     stop("Aind contains illegal indexes!")
   if( (meq > q) || (meq < 0 ) )
@@ -55,7 +56,8 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
                    as.integer(anrow), as.integer(q), as.integer(meq),
                    iact=as.integer(iact), nact=as.integer(nact),
                    iter=as.integer(iter), 
-                   work=as.double(work), ierr=as.integer(factorized))
+                   work=as.double(work), ierr=as.integer(factorized),
+                   PACKAGE = "quadprog")
 
   if( res1$ierr == 1)
     stop("constraints are inconsistent, no solution!")
@@ -120,7 +122,8 @@ solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){
                    as.integer(q), as.integer(meq),
                    iact=as.integer(iact), nact=as.integer(nact),
                    iter=as.integer(iter), work=as.double(work),
-                   ierr=as.integer(factorized))
+                   ierr=as.integer(factorized),
+                   PACKAGE = "quadprog")
 
   if( res1$ierr == 1)
     stop("constraints are inconsistent, no solution!")
