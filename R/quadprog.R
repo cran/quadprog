@@ -1,5 +1,5 @@
 ###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: solve.QP.compact.sf,v 1.10 1997/12/30 07:20:52 berwin Exp $
+###  $Id: quadprog.R,v 1.2 2001/11/27 13:19:12 hornik Exp $
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
   Aindok <- .Fortran("aind",
                      as.integer(Aind), as.integer(anrow+1),
                      as.integer(q), as.integer(n),
-                     ok=as.logical(T))$ok
+                     ok=as.logical(TRUE))$ok
   if( !Aindok )
     stop("Aind contains illegal indexes!")
   if( (meq > q) || (meq < 0 ) )
@@ -69,7 +69,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
        iact=res1$iact[1:res1$nact])   
 }
 ###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: solve.QP.sf,v 1.11 1997/12/28 21:57:20 berwin Exp $
+###  $Id: quadprog.R,v 1.2 2001/11/27 13:19:12 hornik Exp $
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by

@@ -1,3 +1,8 @@
+2001-12-28  Kurt Hornik  <Kurt.Hornik@ci.tuwien.ac.at>
+
+	* DESCRIPTION (Date): New version is 1.4-4.  Had meanwhile fixed
+	Rd syntax problems in man/solve.QP.Rd wout a ChangeLog entry.
+
 2001-06-10  Andreas Weingessel  <Andreas.Weingessel@ci.tuwien.ac.at>
 
 	* Changed Version number to 1.4-3 to fit to CRAN

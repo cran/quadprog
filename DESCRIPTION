@@ -1,6 +1,6 @@
 Package: quadprog
-Version: 1.4-3
-Date: 2001-06-10
+Version: 1.4-4
+Date: 2001-12-29
 Title: Functions to solve Quadratic Programming Problems.
 Author: S original by Berwin A. Turlach <berwin.turlach@anu.edu.au>
  R port by Andreas Weingessel <Andreas.Weingessel@ci.tuwien.ac.at>
