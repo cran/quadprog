@@ -1,0 +1,3 @@
+useDynLib("quadprog")
+
+export("solve.QP", "solve.QP.compact")
