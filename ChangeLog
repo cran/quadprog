@@ -1,3 +1,16 @@
+2006-09-07  Kurt Hornik  <Kurt.Hornik@wu-wien.ac.at>
+
+	* DESCRIPTION (Version): New version is 1.4-9.
+
+	* src/Makevars (PKG_LIBS): Add $(FLIBS).
+
+2006-01-28  Kurt Hornik  <Kurt.Hornik@wu-wien.ac.at>
+
+	* DESCRIPTION (Package): New version is 1.4-8.
+
+	* NAMESPACE: Added.
+	* R/zzz.R: Removed.
+
 2004-01-31  Kurt Hornik  <Kurt.Hornik@wu-wien.ac.at>
 
 	* DESCRIPTION (Version): New version is 1.4-7.
