@@ -132,7 +132,7 @@ solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){
 
   list(solution=res1$sol,
        value=res1$crval,
-       unconstrainted.solution=res1$dvec,
+       unconstrained.solution=res1$dvec,
        iterations=res1$iter,
        iact=res1$iact[1:res1$nact])   
 }

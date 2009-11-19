@@ -4,8 +4,8 @@
 \description{
   This routine implements the dual method of Goldfarb and Idnani (1982,
   1983) for solving quadratic programming problems of the form
-  \eqn{\min(-d^T b + 1/2 b^T D b)} with the constraints \eqn{A^T b >=
-    b_0}.
+  \eqn{\min(-d^T b + 1/2 b^T D b)}{min(-d^T b + 1/2 b^T D b)} with the
+  constraints \eqn{A^T b >= b_0}.
 }
 \usage{
 solve.QP(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE)
@@ -35,51 +35,54 @@ solve.QP(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE)
   }
 }
 \value{
-a list with the following components:
-\item{solution}{
-vector containing the solution of the quadratic programming problem.
+  a list with the following components:
+  \item{solution}{
+    vector containing the solution of the quadratic programming problem.
+  }
+  \item{value}{
+    scalar, the value of the quadratic function at the solution
+  }
+  \item{unconstrained.solution}{
+    vector containing the unconstrained minimizer of the quadratic
+    function.
+  }
+  \item{iterations}{
+    vector of length 2, the first component contains the number of
+    iterations the algorithm needed, the second indicates how often
+    constraints became inactive after becoming active first.
+  }
+  \item{iact}{
+    vector with the indices of the active constraints at the solution. 
+  }
 }
-\item{value}{
-scalar, the value of the quadratic function at the solution
-}
-\item{unconstrained.solution}{
-vector containing the unconstrained minimizer of the quadratic function.
-}
-\item{iterations}{
-vector of length 2, the first component contains the number of
-iterations the algorithm needed, the second indicates how often
-constraints became inactive after becoming active first.
-vector with the indices of the active constraints at the solution. 
-}}
 
 \references{
-Goldfarb, D. and Idnani, A.  (1982).
-Dual and Primal-Dual Methods for Solving Strictly Convex
-Quadratic Programs.  In 
-Numerical Analysis
-J.P. Hennart, ed. Springer-Verlag, Berlin. pp. 226-239.
+  D. Goldfarb and A. Idnani (1982).
+  Dual and Primal-Dual Methods for Solving Strictly Convex
+  Quadratic Programs.
+  In J. P. Hennart (ed.), Numerical Analysis, Springer-Verlag,
+  Berlin, pages 226--239.
 
-Goldfarb, D. and Idnani, A. (1983).
-A numerically stable dual method for solving strictly convex quadratic
-programs.
-Mathematical Programming
-\bold{27}, 1-33.
-}
+  D. Goldfarb and A. Idnani (1983).
+  A numerically stable dual method for solving strictly convex quadratic 
+  programs.
+  \emph{Mathematical Programming}, \bold{27}, 1--33.
+}  
 
 \seealso{
-\code{\link{solve.QP.compact}}
+  \code{\link{solve.QP.compact}}
 }
 
 \examples{
-#
-# Assume we want to minimize: -(0 5 0) \%*\% b + 1/2 b^T b
-# under the constraints:      A^T b >= b0
-# with b0 = (-8,2,0)^T
-# and      (-4  2  0) 
-#      A = (-3  1 -2)
-#          ( 0  0  1)
-# we can use solve.QP as follows:
-#
+##
+## Assume we want to minimize: -(0 5 0) \%*\% b + 1/2 b^T b
+## under the constraints:      A^T b >= b0
+## with b0 = (-8,2,0)^T
+## and      (-4  2  0) 
+##      A = (-3  1 -2)
+##          ( 0  0  1)
+## we can use solve.QP as follows:
+##
 Dmat       <- matrix(0,3,3)
 diag(Dmat) <- 1
 dvec       <- c(0,5,0)
