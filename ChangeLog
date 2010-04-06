@@ -1,3 +1,35 @@
+2010-04-06  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* DESCRIPTION (Version): New version is 1.5-1.
+
+	* src/solve.QP.f, src/solve.QP.compact.f, man/solve.QP.Rd,
+	man/solve.QP.compact.Rd, R/quadprog.R: Implemented changes
+	proposed by Jason Nielsen <jdn@cs.sfu.ca> to return the
+	Lagrangian. 
+
+	* src/solve.QP.f, src/solve.QP.compact.f: Added some code to
+	calculate a number close to machine precision.  If inequality
+	constraints are fulfilled to this precision, they are considered
+	fulfilled.  This solves some numerical problems reported in the
+	past (see TalbotKatz.R in /tests)
+
+	* tests/: added a directory with tests.
+
+	* DESCRIPTION: Took over maintenance from Kurt Hornink.  New
+	version is 1.5-0.  Added Type: entry, change license to GPL
+	(>=2).
+
+	* src/Makevars, src/Makevars.win: latter new, both ensure that the
+	solve.QP*.f files are compiled with SAFE_FFLAGS which seems to be
+	necessary for some platforms.
+
+	* LICENSE.GPL-2, LICENSE.GPL-3: GPL license files to accompany
+	source but not to be installed.
+
+	* src/solve.QP.f, src/solve.QP.compact.f: Fixed typo in line after
+	loop 191.  Noticed by Phillip Wild <p.wild@uq.edu.au> while
+	porting the code to JAVA. 
+
 2009-11-19  Kurt Hornik  <Kurt.Hornik@wu.ac.at>
 
 	* DESCRIPTION (Version): New version is 1.4-12.

@@ -1,5 +1,5 @@
 c
-c  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
+c  Copyright (C) 1995-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
 c
 c  This program is free software; you can redistribute it and/or modify
 c  it under the terms of the GNU General Public License as published by
@@ -60,6 +60,7 @@ c                       given R^{-1}.
 c
 c  Output parameter:
 c  sol   nx1 the final solution (x in the notation above)
+c  lagr  qx1 the final Lagrange multipliers
 c  crval scalar, the value of the criterion at the minimum      
 c  iact  qx1 vector, the constraints which are active in the final
 c        fit (int)
@@ -77,19 +78,30 @@ c  Working space:
 c  work  vector with length at least 2*n+r*(r+5)/2 + 2*q +1
 c        where r=min(n,q)
 c
-      subroutine qpgen2(dmat, dvec, fddmat, n, sol, crval, amat, 
+      subroutine qpgen2(dmat, dvec, fddmat, n, sol, lagr, crval, amat, 
      *     bvec, fdamat, q, meq, iact, nact, iter, work, ierr)  
       implicit none
       integer n, i, j, l, l1, 
      *     info, q, iact(*), iter(*), it1,
      *     ierr, nact, iwzv, iwrv, iwrm, iwsv, iwuv, nvl,
      *     r, fdamat, iwnbv, meq, fddmat
-      double precision dmat(fddmat,*), dvec(*),sol(*), bvec(*),
-     *     work(*), temp, sum, t1, tt, gc, gs, crval,
-     *     nu, amat(fdamat,*)
+      double precision dmat(fddmat,*), dvec(*), lagr(*), sol(*), bvec(*)
+     $     ,work(*), temp, sum, t1, tt, gc, gs, crval,nu, amat(fdamat,*)
+     $     , vsmall, tmpa, tmpb
       logical t1inf, t2min
       r = min(n,q)
       l = 2*n + (r*(r+5))/2 + 2*q + 1
+c
+c     code gleaned from Powell's ZQPCVX routine to determine a small
+c     number  that can be assumed to be an upper bound on the relative
+c     precision of the computer arithmetic.
+c
+      vsmall = 1.0d-60
+ 1    vsmall = vsmall + vsmall
+      tmpa = 1.0d0 + 0.1d0*vsmall
+      tmpb = 1.0d0 + 0.2d0*vsmall
+      if( tmpa .LE. 1.0d0 ) goto 1
+      if( tmpb .LE. 1.0d0 ) goto 1
 c 
 c store the initial dvec to calculate below the unconstrained minima of
 c the critical value.
@@ -101,7 +113,8 @@ c
          work(i) = 0.d0
  11   continue
       do 12 i=1,q
-         iact(i)=0
+         iact(i) = 0
+         lagr(i) = 0.d0
  12   continue
 c
 c get the initial solution
@@ -188,6 +201,9 @@ c
          do 61 j = 1,n
             sum = sum + amat(j,i)*sol(j)
  61      continue
+         if ( abs(sum) .LT. vsmall ) then
+            sum = 0.0d0
+         endif
          if (i .GT. meq) then
             work(l) = sum
          else
@@ -226,7 +242,12 @@ c            nvl = i
 c            goto 72
 c         endif
  71   continue
- 72   if (nvl .EQ. 0) goto 999
+ 72   if (nvl .EQ. 0) then
+         do 73 i=1,nact
+            lagr(iact(i))=work(iwuv+i)
+ 73      continue
+         goto 999
+      endif
 c     
 c calculate d=J^Tn^+ where n^+ is the normal vector of the violated
 c constraint. J is stored in dmat in this implementation!!
@@ -296,11 +317,9 @@ c
       do 110 i=iwzv+1,iwzv+n
          sum = sum + work(i)*work(i)
  110  continue
-      temp = 1000.d0
-      sum  = sum+temp
-      if (temp .EQ. sum) then
+      if (abs(sum) .LE. vsmall) then
 c         
-c No step in pmrimal space such that the new constraint becomes
+c No step in primal space such that the new constraint becomes
 c feasible. Take step in dual space and drop a constant.
 c     
          if (t1inf) then
@@ -447,7 +466,7 @@ c
                   do 191 j=1,n
                      amat(j,nvl) = -amat(j,nvl)
  191              continue
-               bvec(i) = -bvec(i)
+                  bvec(nvl) = -bvec(nvl)
                endif
             endif
             goto 700

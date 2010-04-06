@@ -1,5 +1,5 @@
 c
-c  Copyright (C) 1997 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
+c  Copyright (C) 1997-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
 c
 c  This program is free software; you can redistribute it and/or modify
 c  it under the terms of the GNU General Public License as published by

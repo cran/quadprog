@@ -66,6 +66,9 @@ solve.QP.compact(Dmat, dvec, Amat, Aind, bvec, meq=0, factorized=FALSE)
     iterations the algorithm needed, the second indicates how often
     constraints became inactive after becoming active first.
   }
+  \item{Lagrangian}{
+    vector with the Lagragian at the solution. 
+  }
   \item{iact}{
     vector with the indices of the active constraints at the solution.
   }

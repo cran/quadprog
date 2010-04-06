@@ -1,5 +1,4 @@
-###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: quadprog.R 571 2002-07-03 07:48:22Z hornik $
+###  Copyright (C) 1995-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
@@ -44,6 +43,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
   nact  <- 0
   r     <- min(n,q)
   sol   <- rep(0,n)
+  lagr  <- rep(0,q)
   crval <- 0
   work  <- rep(0,2*n+r*(r+5)/2+2*q+1)
   iter  <- rep(0,2)
@@ -51,7 +51,8 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
   res1 <- .Fortran("qpgen1",
                    as.double(Dmat), dvec=as.double(dvec),
                    as.integer(n), as.integer(n),
-                   sol=as.double(sol), crval=as.double(crval),
+                   sol=as.double(sol), lagr=as.double(lagr),
+                   crval=as.double(crval),
                    as.double(Amat), as.integer(Aind), as.double(bvec),
                    as.integer(anrow), as.integer(q), as.integer(meq),
                    iact=as.integer(iact), nact=as.integer(nact),
@@ -68,10 +69,10 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
        value=res1$crval,
        unconstrained.solution=res1$dvec,
        iterations=res1$iter,
+       Lagrangian = res1$lagr,
        iact=res1$iact[1:res1$nact])   
 }
-###  Copyright (C) 1995 Berwin A. Turlach <berwin@alphasun.anu.edu.au>
-###  $Id: quadprog.R 571 2002-07-03 07:48:22Z hornik $
+###  Copyright (C) 1995-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
@@ -110,6 +111,7 @@ solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){
   nact  <- 0
   r     <- min(n,q)
   sol   <- rep(0,n)
+  lagr  <- rep(0,q)
   crval <- 0
   work  <- rep(0,2*n+r*(r+5)/2+2*q+1)
   iter  <- rep(0,2)
@@ -117,7 +119,8 @@ solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){
   res1 <- .Fortran("qpgen2",
                    as.double(Dmat), dvec=as.double(dvec),
                    as.integer(n), as.integer(n),
-                   sol=as.double(sol), crval=as.double(crval),
+                   sol=as.double(sol), lagr=as.double(lagr),
+                   crval=as.double(crval),
                    as.double(Amat), as.double(bvec), as.integer(n),
                    as.integer(q), as.integer(meq),
                    iact=as.integer(iact), nact=as.integer(nact),
@@ -134,5 +137,6 @@ solve.QP <- function(Dmat, dvec, Amat, bvec, meq=0, factorized=FALSE){
        value=res1$crval,
        unconstrained.solution=res1$dvec,
        iterations=res1$iter,
+       Lagrangian = res1$lagr,
        iact=res1$iact[1:res1$nact])   
 }

@@ -1,1 +1,11 @@
 PKG_LIBS = $(BLAS_LIBS) $(FLIBS)
+
+QP_FFLAGS = $(FPICFLAGS) $(SAFE_FFLAGS) $(SHLIB_FFLAGS)
+
+all: $(SHLIB)
+
+solve.QP.o: solve.QP.f
+	$(F77) $(QP_FFLAGS) -c -o solve.QP.o solve.QP.f
+
+solve.QP.compact.o: solve.QP.compact.f
+	$(F77) $(QP_FFLAGS) -c -o solve.QP.compact.o solve.QP.compact.f
