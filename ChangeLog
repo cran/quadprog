@@ -1,3 +1,13 @@
+2010-04-08  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* DESCRIPTION (Version): New version is 1.5-2.
+
+	* src/init.c, src/quadprog.h, src/quadprog-win.def, src/Makevars:
+	Implemented changes to register native routines and control
+	visibility.  At least one other package seems to call the FORTRAN
+	code directly and checks of that package fail more gracefully if
+	the interface to a registered FORTRAN routine changes.
+
 2010-04-06  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* DESCRIPTION (Version): New version is 1.5-1.
