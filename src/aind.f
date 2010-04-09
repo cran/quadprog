@@ -25,15 +25,14 @@ c  Aind is a m times q matrix constructed in Splus
 c
       subroutine aind(ind,m,q,n,ok)
       implicit none
-      integer m, ind(m,*), q, n, i, j
-      logical ok
-      ok = .FALSE.
+      integer m, ind(m,*), q, n, i, j, ok
+      ok = 0
       do i=1,q
          if( ind(1,i) .LT. 1 .OR. ind(1,i) .GT. n ) return
          do j=2,ind(1,i)+1
             if( ind(j,i) .LT. 1 .OR. ind(j,i) .GT. n ) return
          enddo
       enddo
-      ok = .TRUE.
+      ok = 1
       return
       end

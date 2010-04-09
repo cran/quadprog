@@ -1,3 +1,18 @@
+2010-04-09  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* DESCRIPTION (Version): New version is 1.5-3.
+
+	* tests/: added further test problems.
+	
+	* src/aind.f: changed argument ok from LOGICAL to INTEGER as per
+	documentation on how logicals should be passed to FORTRAN code.
+
+	* NAMESPACE: added .registration and .fixes argument to useDynLib
+	directive. 
+	
+	* R/quadprog.R: removed PACKAGE argument from FF calls and used
+	registered symbols in namespace instead.
+
 2010-04-08  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* DESCRIPTION (Version): New version is 1.5-2.
