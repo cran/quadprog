@@ -1,4 +1,4 @@
-###  Copyright (C) 1995-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
+###  Copyright (C) 1995-2010 Berwin A. Turlach <Berwin.Turlach@gmail.com>
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ solve.QP.compact <- function(Dmat, dvec, Amat, Aind, bvec, meq=0,
        Lagrangian = res1$lagr,
        iact=res1$iact[1:res1$nact])   
 }
-###  Copyright (C) 1995-2010 Berwin A. Turlach <berwin@maths.uwa.edu.au>
+###  Copyright (C) 1995-2010 Berwin A. Turlach <Berwin.Turlach@gmail.com>
 ###
 ###  This program is free software; you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by

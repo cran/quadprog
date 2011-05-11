@@ -1,3 +1,11 @@
+2011-05-12  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Version): New version is 1.5-4.
+
+	* R/quadprog.R, DESCRIPTION, src/aind.f, src/solve.QP.compact.f,
+	src/init.c, src/quadprog.h, src/solve.QP.f: Updated e-mail
+	details. 
+
 2010-04-09  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* DESCRIPTION (Version): New version is 1.5-3.

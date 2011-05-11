@@ -1,5 +1,5 @@
 /* Copyright (C) 2010 */
-/* Berwin A Turlach <berwin@maths.uwa.edu.au> */
+/* Berwin A Turlach <Berwin.Turlach@gmail.com> */
 
 /* This program is free software; you can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
