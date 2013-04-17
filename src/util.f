@@ -1,6 +1,6 @@
       subroutine dpori(a,lda,n)
       integer lda,n
-      double precision a(lda,1)
+      double precision a(lda,*)
 c
 c     dpori computes the inverse of the factor of a 
 c     double precision symmetric positive definite matrix 
@@ -66,7 +66,7 @@ c
  
       subroutine dposl(a,lda,n,b)
       integer lda,n
-      double precision a(lda,1),b(1)
+      double precision a(lda,*),b(*)
 c
 c     dposl solves the double precision symmetric positive definite
 c     system a * x = b

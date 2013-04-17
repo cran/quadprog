@@ -1,8 +1,15 @@
+2013-04-17  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Version): New versin is 1.5-5
+
+	* src/util.f: Changed declaration of arrays in subroutine to avoid
+	faults if R is running with array bound checks.
+
 2011-05-12  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION (Version): New version is 1.5-4.
 
-	* R/quadprog.R, DESCRIPTION, src/aind.f, src/solve.QP.compact.f,
+	* R/quadprog.R, DESCRIPTION, src/aind.f, src/solve.QP.compact.f:
 	src/init.c, src/quadprog.h, src/solve.QP.f: Updated e-mail
 	details. 
 
