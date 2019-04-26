@@ -1,12 +1,12 @@
 PKG_LIBS = $(BLAS_LIBS) $(FLIBS)
-PKG_FFLAGS = $(F77_VISIBILITY)
+PKG_FFLAGS = $(F_VISIBILITY)
 
-QP_FFLAGS = $(F77_VISIBILITY) $(FPICFLAGS) $(SAFE_FFLAGS) $(SHLIB_FFLAGS) 
+QP_FFLAGS = $(F_VISIBILITY) $(FPICFLAGS) $(SAFE_FFLAGS) $(SHLIB_FFLAGS) 
 
 all: $(SHLIB)
 
 solve.QP.o: solve.QP.f
-	$(F77) $(QP_FFLAGS) -c -o solve.QP.o solve.QP.f
+	$(FC) $(QP_FFLAGS) -c -o solve.QP.o solve.QP.f
 
 solve.QP.compact.o: solve.QP.compact.f
-	$(F77) $(QP_FFLAGS) -c -o solve.QP.compact.o solve.QP.compact.f
+	$(FC) $(QP_FFLAGS) -c -o solve.QP.compact.o solve.QP.compact.f
