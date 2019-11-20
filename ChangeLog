@@ -1,3 +1,15 @@
+2019-11-20 Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Version): New version is 1.5-8
+
+	* DESCRIPTION (Author): Added Cleve Moler as requested per CRAN
+	policy 
+
+	* src/solve.QP.compact.f, solve.QP.f: Implemented fixes suggested
+	at:
+	https://chasethedevil.github.io/post/quadprog-nans/
+	https://github.com/cran/quadprog/pull/1/files
+
 2019-05-05 Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION (Version): New version is 1.5-7

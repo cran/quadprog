@@ -419,7 +419,7 @@ c
                   if (work(i) .EQ. 0.d0) goto 160
                   gc   = max(abs(work(i-1)),abs(work(i)))
                   gs   = min(abs(work(i-1)),abs(work(i)))
-                  temp = sign(gc*sqrt(1+gs*gs/(gc*gc)), work(i-1))
+                  temp = sign(gc*sqrt(1+(gs/gc)*(gs/gc)), work(i-1))
                   gc   = work(i-1)/temp
                   gs   = work(i)/temp
 c 
@@ -507,7 +507,7 @@ c
       if (work(l1) .EQ. 0.d0) goto 798
       gc   = max(abs(work(l1-1)),abs(work(l1)))
       gs   = min(abs(work(l1-1)),abs(work(l1)))
-      temp = sign(gc*sqrt(1+gs*gs/(gc*gc)), work(l1-1))
+      temp = sign(gc*sqrt(1+(gs/gc)*(gs/gc)), work(l1-1))
       gc   = work(l1-1)/temp
       gs   = work(l1)/temp
 c 
